@@ -1,11 +1,11 @@
-const ProgressBar = ({ current, total }) => {
-  const percentage = Math.round(((current + 1) / total) * 100);
+const ProgressBar = ({ answered = 0, total }) => {
+  const percentage = total > 0 ? Math.round((answered / total) * 100) : 0;
 
   return (
     <div className="w-full space-y-2">
       <div className="flex items-center justify-between text-xs sm:text-sm font-semibold text-neutral">
         <span>
-          Pertanyaan <span className="text-primary font-bold">{current + 1}</span> dari {total}
+          Terjawab <span className="text-primary font-bold">{answered}</span> dari {total}
         </span>
         <span className="text-primary">{percentage}% Selesai</span>
       </div>

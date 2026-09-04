@@ -9,6 +9,7 @@ const QuestionNavigation = ({
   onSubmit,
 }) => {
   const answeredCount = Object.keys(answers).length;
+  const percentage = totalQuestions > 0 ? Math.round((answeredCount / totalQuestions) * 100) : 0;
   const isAllAnswered = answeredCount === totalQuestions;
   const isLastQuestion = currentIndex === totalQuestions - 1;
 
@@ -19,6 +20,7 @@ const QuestionNavigation = ({
           <span>
             ({answeredCount}/{totalQuestions} Terjawab)
           </span>
+          <span className="text-primary font-bold">{percentage}%</span>
         </div>
         <div className="grid grid-cols-5 gap-2">
           {questions.map((q, idx) => {

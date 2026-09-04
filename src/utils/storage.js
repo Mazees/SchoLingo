@@ -55,12 +55,3 @@ export const getSubmitStatus = () => {
     return false;
   }
 };
-
-export const clearTestStorage = () => {
-  try {
-    localStorage.removeItem(ANSWERS_KEY);
-    localStorage.removeItem(IS_SUBMITTED_KEY);
-  } catch (error) {
-    console.error("Failed to clear test storage:", error);
-  }
-};

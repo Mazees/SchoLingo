@@ -8,7 +8,6 @@ import {
   saveQuizAnswers,
   getSubmitStatus,
   saveSubmitStatus,
-  clearTestStorage,
 } from "../utils/storage";
 import { useNavigate } from "react-router-dom";
 

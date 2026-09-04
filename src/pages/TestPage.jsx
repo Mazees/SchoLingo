@@ -101,7 +101,7 @@ const TestPage = () => {
 
           <div className="w-full sm:w-72">
             <ProgressBar
-              current={currentQuestionIndex}
+              answered={answeredCount}
               total={questions.length}
             />
           </div>
