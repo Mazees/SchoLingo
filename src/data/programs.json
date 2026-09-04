@@ -1,0 +1,35 @@
+[
+  {
+    "level": "beginner",
+    "title": "English Foundation",
+    "description": "Designed for learners looking to build solid essential grammar rules, daily conversational vocabulary, and confidence in basic communication.",
+    "benefits": [
+      "Mastery of core English grammar structures and tenses",
+      "Essential daily vocabulary and functional survival phrases",
+      "Confidence building in speaking and listening for everyday scenarios",
+      "Personalized feedback and guided practice exercises"
+    ]
+  },
+  {
+    "level": "intermediate",
+    "title": "English Intermediate",
+    "description": "Perfect for individuals aiming to enhance fluency, articulate opinions clearly, understand complex texts, and handle professional and social interactions.",
+    "benefits": [
+      "Expanded vocabulary range for professional and academic contexts",
+      "In-depth command of compound and complex sentence structures",
+      "Interactive discussions and debate sessions to boost spoken fluency",
+      "Practical reading comprehension and listening strategies"
+    ]
+  },
+  {
+    "level": "advanced",
+    "title": "English Advanced",
+    "description": "A comprehensive program for ambitious communicators focusing on nuanced expression, persuasive argumentation, business correspondence, and near-native proficiency.",
+    "benefits": [
+      "Advanced idiomatic expressions, tone nuance, and precise diction",
+      "Mastery of high-level academic and executive business writing",
+      "Critical analysis of complex texts, articles, and presentations",
+      "Refined articulation for international meetings, interviews, and public speaking"
+    ]
+  }
+]

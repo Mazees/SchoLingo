@@ -1,0 +1,215 @@
+[
+  {
+    "id": 1,
+    "category": "grammar",
+    "difficulty": "beginner",
+    "points": 2,
+    "question": "She _____ to the library every Wednesday afternoon.",
+    "options": [
+      "go",
+      "goes",
+      "going",
+      "gone"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 2,
+    "category": "grammar",
+    "difficulty": "beginner",
+    "points": 2,
+    "question": "They _____ not finish their homework yesterday.",
+    "options": [
+      "do",
+      "does",
+      "did",
+      "done"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 3,
+    "category": "grammar",
+    "difficulty": "intermediate",
+    "points": 5,
+    "question": "If I had known about the traffic, I _____ a different route.",
+    "options": [
+      "will take",
+      "would take",
+      "would have taken",
+      "had taken"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 4,
+    "category": "grammar",
+    "difficulty": "intermediate",
+    "points": 5,
+    "question": "The report _____ by the management team before the meeting began.",
+    "options": [
+      "is reviewed",
+      "had been reviewed",
+      "has reviewed",
+      "was reviewing"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 5,
+    "category": "grammar",
+    "difficulty": "advanced",
+    "points": 15,
+    "question": "Hardly _____ the office when the urgent phone call came in.",
+    "options": [
+      "he had entered",
+      "had he entered",
+      "did he entered",
+      "he entered"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 6,
+    "category": "vocabulary",
+    "difficulty": "beginner",
+    "points": 2,
+    "question": "Please make sure your seatbelt is securely _____ before takeoff.",
+    "options": [
+      "fastened",
+      "closed",
+      "tied",
+      "pushed"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 7,
+    "category": "vocabulary",
+    "difficulty": "intermediate",
+    "points": 5,
+    "question": "The company decided to _____ new safety regulations across all branches.",
+    "options": [
+      "implement",
+      "hesitate",
+      "abandon",
+      "confront"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 8,
+    "category": "vocabulary",
+    "difficulty": "intermediate",
+    "points": 5,
+    "question": "Her explanation was so _____ that everyone immediately understood the complex problem.",
+    "options": [
+      "ambiguous",
+      "lucid",
+      "tedious",
+      "hostile"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 9,
+    "category": "vocabulary",
+    "difficulty": "advanced",
+    "points": 15,
+    "question": "The board members criticized the CEO for adopting an unnecessarily _____ approach during negotiations.",
+    "options": [
+      "pragmatic",
+      "conciliatory",
+      "truculent",
+      "meticulous"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 10,
+    "category": "reading_comprehension",
+    "difficulty": "beginner",
+    "points": 2,
+    "passage": "Urban rooftop gardens are becoming increasingly popular in large cities. They not only provide fresh organic vegetables for local communities, but also help reduce building energy costs by providing natural insulation.",
+    "question": "What is one mentioned benefit of urban rooftop gardens?",
+    "options": [
+      "They eliminate the need for city electricity entirely.",
+      "They lower building energy expenses through insulation.",
+      "They replace all commercial grocery stores in urban areas.",
+      "They are mandatory for all residential skyscrapers."
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 11,
+    "category": "reading_comprehension",
+    "difficulty": "intermediate",
+    "points": 5,
+    "passage": "Biomimicry is the practice of looking to nature for inspiration to solve complex human problems. For instance, engineers studied the aerodynamic beak of the kingfisher bird to redesign Japan's bullet train, significantly decreasing high-speed noise and improving energy efficiency.",
+    "question": "According to the passage, why was the kingfisher bird studied by engineers?",
+    "options": [
+      "To protect endangered bird species along Japanese railway tracks.",
+      "To understand how birds migrate across long distances.",
+      "To redesign a high-speed train for lower noise and better efficiency.",
+      "To develop lightweight materials for aircraft construction."
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 12,
+    "category": "reading_comprehension",
+    "difficulty": "advanced",
+    "points": 15,
+    "passage": "The transition to quantum computing presents both unprecedented computational power and severe cryptographic vulnerabilities. While quantum algorithms can rapidly factorize large integers—undermining widely-used RSA encryption—post-quantum cryptography is simultaneously being developed to construct lattice-based algorithms impervious to quantum decryption.",
+    "question": "What primary paradox regarding quantum computing is highlighted in the text?",
+    "options": [
+      "It offers immense computing potential while threatening foundational data security standards.",
+      "It makes lattice-based systems obsolete while strengthening RSA encryption.",
+      "It accelerates algorithmic speed but proves too costly for cryptographic deployment.",
+      "It relies entirely on classical encryption architectures to solve complex factorizations."
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 13,
+    "category": "sentence_structure",
+    "difficulty": "beginner",
+    "points": 2,
+    "question": "Choose the correctly structured sentence:",
+    "options": [
+      "Always she drinks coffee in the morning.",
+      "She drinks always coffee in the morning.",
+      "She always drinks coffee in the morning.",
+      "In the morning drinks always she coffee."
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 14,
+    "category": "sentence_structure",
+    "difficulty": "advanced",
+    "points": 15,
+    "question": "Choose the most grammatically accurate and well-structured sentence:",
+    "options": [
+      "Not only the keynote speaker delivered a compelling presentation, but also answered questions thoroughly.",
+      "Not only did the keynote speaker deliver a compelling presentation, but she also answered questions thoroughly.",
+      "The keynote speaker not only delivering a compelling presentation, but answering questions thoroughly.",
+      "Did the keynote speaker not only deliver a compelling presentation, but also she answered questions thoroughly."
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 15,
+    "category": "functional_english",
+    "difficulty": "intermediate",
+    "points": 5,
+    "question": "In a formal business email, which expression is most suitable for requesting an urgent update on a delayed project?",
+    "options": [
+      "Hey, where is the project stuff you promised?",
+      "I would appreciate it if you could provide a status update at your earliest convenience.",
+      "Give me the latest file immediately or we will cancel.",
+      "What is going on with the project right now?"
+    ],
+    "correctAnswer": 1
+  }
+]
