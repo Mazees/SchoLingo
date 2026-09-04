@@ -4,7 +4,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative w-full h-[calc(100vh-96px)] min-h-145 overflow-hidden"
+      className="relative w-full h-[calc(100vh-96px)] min-h-145 overflow-hidden scroll-mt-24 "
     >
       <img
         src="/hero-bg.jpeg"

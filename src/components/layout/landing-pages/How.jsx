@@ -20,7 +20,10 @@ const How = () => {
   ];
 
   return (
-    <section id="how" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+    <section
+      id="how"
+      className="py-20 px-4 sm:px-6 lg:px-8 bg-white scroll-mt-24 "
+    >
       <div className="max-w-5xl mx-auto text-center">
         <span className="text-accent font-bold text-sm tracking-wider uppercase">
           Cara Kerja
@@ -29,7 +32,8 @@ const How = () => {
           3 Langkah Mudah Memulai
         </h2>
         <p className="mt-4 text-base sm:text-lg text-neutral/70 max-w-2xl mx-auto">
-          Tidak perlu persiapan rumit. Anda bisa langsung memulai tes kapan saja.
+          Tidak perlu persiapan rumit. Anda bisa langsung memulai tes kapan
+          saja.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 text-left">
@@ -42,12 +46,8 @@ const How = () => {
                 <div className="size-10 rounded-full bg-primary text-white font-bold flex items-center justify-center text-base mb-4">
                   {step.number}
                 </div>
-                <h3 className="text-lg font-bold text-neutral">
-                  {step.title}
-                </h3>
-                <p className="text-sm text-neutral/70 mt-2">
-                  {step.desc}
-                </p>
+                <h3 className="text-lg font-bold text-neutral">{step.title}</h3>
+                <p className="text-sm text-neutral/70 mt-2">{step.desc}</p>
               </div>
             </div>
           ))}

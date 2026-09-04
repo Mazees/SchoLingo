@@ -1,6 +1,6 @@
 const About = () => {
   return (
-    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-tertiary">
+    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-tertiary scroll-mt-24">
       <div className="max-w-5xl mx-auto text-center">
         <span className="text-accent font-bold text-sm tracking-wider uppercase">
           Tentang SchoLingo
