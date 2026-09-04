@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { useQuiz } from "../hooks/useQuiz";
 import { generateWhatsAppLink } from "../utils/whatsapp";
-import { Link } from "react-router-dom";
+import ConfirmModal from "../components/common/ConfirmModal";
+import { useNavigate } from "react-router-dom";
 
 const ResultPage = () => {
+  const navigate = useNavigate();
   const [step, setStep] = useState(1);
-  const { userSession, questions, getResult } = useQuiz();
+  const [isResetModalOpen, setIsResetModalOpen] = useState(false);
+  const { userSession, questions, getResult, resetQuiz } = useQuiz();
 
   const { score, level, correctCount, programsSuggestion } = getResult();
 
@@ -89,12 +92,13 @@ const ResultPage = () => {
             </div>
 
             <div className="pt-2 sm:pt-4 flex flex-col-reverse sm:flex-row items-center justify-between gap-3 sm:gap-4">
-              <Link
-                to="/test"
+              <button
+                type="button"
+                onClick={() => setIsResetModalOpen(true)}
                 className="w-full sm:w-auto px-6 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl bg-white hover:bg-neutral/10 text-neutral font-black text-xs sm:text-sm border-2 border-neutral/20 transition cursor-pointer text-center shadow-xs"
               >
                 Ulangi Tes
-              </Link>
+              </button>
 
               <button
                 type="button"
@@ -170,6 +174,26 @@ const ResultPage = () => {
           </div>
         )}
       </div>
+
+      <ConfirmModal
+        isOpen={isResetModalOpen}
+        title="Ulangi Placement Test?"
+        message={
+          <span>
+            Jawaban dan hasil tes Anda saat ini akan direset. Anda akan mengulang tes dari pertanyaan pertama.
+          </span>
+        }
+        iconType="warning"
+        confirmVariant="danger"
+        confirmText="Ya, Ulangi Tes"
+        cancelText="Batal"
+        onCancel={() => setIsResetModalOpen(false)}
+        onConfirm={() => {
+          setIsResetModalOpen(false);
+          resetQuiz();
+          navigate("/test");
+        }}
+      />
     </div>
   );
 };

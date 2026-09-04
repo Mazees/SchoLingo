@@ -3,7 +3,7 @@ import { useQuiz } from "../hooks/useQuiz";
 import ProgressBar from "../components/quiz/ProgressBar";
 import QuestionCard from "../components/quiz/QuestionCard";
 import QuestionNavigation from "../components/quiz/QuestionNavigation";
-import ConfirmSubmitModal from "../components/quiz/ConfirmSubmitModal";
+import ConfirmModal from "../components/common/ConfirmModal";
 import { Link } from "react-router-dom";
 
 const TestPage = () => {
@@ -18,10 +18,20 @@ const TestPage = () => {
     nextQuestion,
     goToQuestion,
     finishTest,
+    resetQuiz,
     isSubmitted,
   } = useQuiz();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isRetestModalOpen, setIsRetestModalOpen] = useState(false);
+
+  const handleStartClick = () => {
+    if (isSubmitted) {
+      setIsRetestModalOpen(true);
+    } else {
+      startQuiz();
+    }
+  };
 
   if (currentQuestionIndex === -1) {
     return (
@@ -57,7 +67,7 @@ const TestPage = () => {
             )}
             <button
               type="button"
-              onClick={startQuiz}
+              onClick={handleStartClick}
               className="w-full py-4 px-6 rounded-2xl bg-primary text-white hover:text-primary hover:bg-white border-2 border-transparent hover:border-primary font-extrabold text-base shadow-lg shadow-primary/20 transition-all cursor-pointer active:scale-98"
             >
               Mulai Sekarang
@@ -73,6 +83,26 @@ const TestPage = () => {
             </Link>
           </div>
         </div>
+
+        <ConfirmModal
+          isOpen={isRetestModalOpen}
+          title="Mulai Ulang Tes?"
+          message={
+            <span>
+              Anda sudah pernah menyelesaikan tes sebelumnya. Memulai tes baru akan mereset riwayat jawaban dan hasil tes Anda.
+            </span>
+          }
+          iconType="warning"
+          confirmVariant="danger"
+          confirmText="Ya, Mulai Ulang"
+          cancelText="Batal"
+          onCancel={() => setIsRetestModalOpen(false)}
+          onConfirm={() => {
+            setIsRetestModalOpen(false);
+            resetQuiz();
+            startQuiz();
+          }}
+        />
       </div>
     );
   }
@@ -131,10 +161,34 @@ const TestPage = () => {
         </div>
       </div>
 
-      <ConfirmSubmitModal
+      <ConfirmModal
         isOpen={isModalOpen}
-        totalQuestions={questions.length}
-        answeredCount={answeredCount}
+        title={
+          answeredCount === questions.length
+            ? "Kumpulkan Jawaban Sekarang?"
+            : "Ada Soal yang Belum Dijawab!"
+        }
+        message={
+          answeredCount === questions.length ? (
+            <span>
+              Anda telah menjawab seluruh{" "}
+              <strong className="text-neutral">{questions.length} soal</strong>.
+              Hasil tes akan langsung dihitung.
+            </span>
+          ) : (
+            <span>
+              Masih ada{" "}
+              <strong className="text-red-500">
+                {questions.length - answeredCount} soal
+              </strong>{" "}
+              yang belum dijawab. Apakah Anda yakin ingin menyelesaikan tes sekarang?
+            </span>
+          )
+        }
+        iconType={answeredCount === questions.length ? "success" : "warning"}
+        confirmVariant={answeredCount === questions.length ? "primary" : "warning"}
+        confirmText="Ya, Kumpulkan"
+        cancelText="Periksa Lagi"
         onCancel={() => setIsModalOpen(false)}
         onConfirm={() => {
           setIsModalOpen(false);

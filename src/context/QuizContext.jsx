@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useCallback, useMemo } from "react";
 import questionsData from "../data/questions.json";
 import programsData from "../data/programs.json";
 import {
@@ -8,6 +8,7 @@ import {
   saveQuizAnswers,
   getSubmitStatus,
   saveSubmitStatus,
+  clearTestStorage,
 } from "../utils/storage";
 import { useNavigate } from "react-router-dom";
 
@@ -27,16 +28,16 @@ export const QuizProvider = ({ children }) => {
     () => getSubmitStatus() || false,
   );
 
-  const registerUser = (userData) => {
+  const registerUser = useCallback((userData) => {
     setUserSession(userData);
     saveUserSession(userData);
-  };
+  }, []);
 
-  const startQuiz = () => {
+  const startQuiz = useCallback(() => {
     setCurrentQuestionIndex(0);
-  };
+  }, []);
 
-  const selectAnswer = (questionId, optionIndex) => {
+  const selectAnswer = useCallback((questionId, optionIndex) => {
     setAnswers((prev) => {
       const updated = {
         ...prev,
@@ -45,45 +46,52 @@ export const QuizProvider = ({ children }) => {
       saveQuizAnswers(updated);
       return updated;
     });
-  };
+  }, []);
 
-  const nextQuestion = () => {
+  const nextQuestion = useCallback(() => {
     setCurrentQuestionIndex((prev) => {
       if (prev < questions.length - 1) return prev + 1;
       return prev;
     });
-  };
+  }, [questions.length]);
 
-  const prevQuestion = () => {
+  const prevQuestion = useCallback(() => {
     setCurrentQuestionIndex((prev) => {
       if (prev > 0) return prev - 1;
       return prev;
     });
-  };
+  }, []);
 
-  const goToQuestion = (index) => {
-    if (index >= 0 && index < questions.length) {
-      setCurrentQuestionIndex(index);
-    }
-  };
+  const goToQuestion = useCallback(
+    (index) => {
+      if (index >= 0 && index < questions.length) {
+        setCurrentQuestionIndex(index);
+      }
+    },
+    [questions.length],
+  );
 
-  const calculateScore = () => {
-    return questions.reduce((total, quest) => {
+  const finishTest = useCallback(() => {
+    setIsSubmitted(true);
+    saveSubmitStatus(true);
+    navigate("/result");
+  }, [navigate]);
+
+  const resetQuiz = useCallback(() => {
+    setAnswers({});
+    setCurrentQuestionIndex(-1);
+    setIsSubmitted(false);
+    clearTestStorage();
+  }, []);
+
+  const getResult = useCallback(() => {
+    const totalScore = questions.reduce((total, quest) => {
       if (answers[quest.id] === quest.correctAnswer) {
         return total + quest.points;
       }
       return total;
     }, 0);
-  };
 
-  const finishTest = () => {
-    setIsSubmitted(true);
-    saveSubmitStatus(true);
-    navigate("/result");
-  };
-
-  const getResult = () => {
-    const totalScore = calculateScore();
     const correctCount = questions.reduce((count, q) => {
       return answers[q.id] === q.correctAnswer ? count + 1 : count;
     }, 0);
@@ -101,24 +109,44 @@ export const QuizProvider = ({ children }) => {
       level,
       programsSuggestion: programs.find((p) => p.level === level),
     };
-  };
+  }, [questions, answers, programs]);
 
-  const value = {
-    questions,
-    programs,
-    userSession,
-    answers,
-    currentQuestionIndex,
-    isSubmitted,
-    registerUser,
-    startQuiz,
-    selectAnswer,
-    prevQuestion,
-    nextQuestion,
-    goToQuestion,
-    finishTest,
-    getResult,
-  };
+  const value = useMemo(
+    () => ({
+      questions,
+      programs,
+      userSession,
+      answers,
+      currentQuestionIndex,
+      isSubmitted,
+      registerUser,
+      startQuiz,
+      selectAnswer,
+      prevQuestion,
+      nextQuestion,
+      goToQuestion,
+      finishTest,
+      resetQuiz,
+      getResult,
+    }),
+    [
+      questions,
+      programs,
+      userSession,
+      answers,
+      currentQuestionIndex,
+      isSubmitted,
+      registerUser,
+      startQuiz,
+      selectAnswer,
+      prevQuestion,
+      nextQuestion,
+      goToQuestion,
+      finishTest,
+      resetQuiz,
+      getResult,
+    ],
+  );
 
   return <QuizContext.Provider value={value}>{children}</QuizContext.Provider>;
 };
