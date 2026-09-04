@@ -161,7 +161,7 @@ const Header = () => {
 
         <div className="pt-4 border-t border-zinc-100">
           <Link
-            to="/register"
+            to={isRegistered ? "/test" : "/register"}
             onClick={closeDrawer}
             className="w-full inline-flex items-center justify-center bg-primary text-white font-semibold py-3 px-4 rounded-xl shadow-md hover:opacity-95 transition duration-200 text-center"
           >
