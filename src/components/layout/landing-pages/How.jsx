@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import { useSession } from "../../../hooks/useSession";
 
 const How = () => {
+  const { isRegistered } = useSession();
   const steps = [
     {
       number: "1",
@@ -55,10 +57,10 @@ const How = () => {
 
         <div className="mt-12">
           <Link
-            to="/register"
-            className="inline-flex items-center justify-center bg-primary hover:opacity-90 text-white font-bold px-8 py-3.5 rounded-xl transition-all"
+            to={isRegistered ? "/test" : "/register"}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-primary hover:text-primary hover:bg-white text-white text-base font-bold px-8 py-3.5 rounded-xl transition-all"
           >
-            Mulai Sekarang
+            Mulai Tes Sekarang
           </Link>
         </div>
       </div>

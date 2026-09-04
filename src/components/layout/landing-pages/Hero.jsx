@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { useQuiz } from "../../../hooks/useQuiz";
+import { useSession } from "../../../hooks/useSession";
 
 const Hero = () => {
-  const { isRegistered } = useQuiz;
+  const { isRegistered } = useSession();
   return (
     <section
       id="home"
