@@ -70,7 +70,7 @@ const TestPage = () => {
               onClick={handleStartClick}
               className="w-full py-4 px-6 rounded-2xl bg-primary text-white hover:text-primary hover:bg-white border-2 border-transparent hover:border-primary font-extrabold text-base shadow-lg shadow-primary/20 transition-all cursor-pointer active:scale-98"
             >
-              Mulai Sekarang
+              {isSubmitted ? "Ulangi Tes" : "Mulai Sekarang"}
             </button>
           </div>
 

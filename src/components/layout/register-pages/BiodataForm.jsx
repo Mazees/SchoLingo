@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSession } from "../../../hooks/useSession";
 import { useQuiz } from "../../../hooks/useQuiz";
+import ConfirmModal from "../../common/ConfirmModal";
 
 const BiodataForm = () => {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ const BiodataForm = () => {
   });
 
   const [error, setError] = useState("");
+  const [isConfirmOpen, setIsConfirmOpen] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -33,17 +35,24 @@ const BiodataForm = () => {
     if (
       !formData.name.trim() ||
       !formData.email.trim() ||
-      !formData.phone.trim()
+      !formData.phone.trim() ||
+      !formData.domicile.trim()
     ) {
-      setError("Nama, Email, dan WhatsApp wajib diisi.");
+      setError("Semua kolom wajib diisi.");
       return;
     }
+
+    setIsConfirmOpen(true);
+  };
+
+  const handleConfirmRegister = () => {
+    setIsConfirmOpen(false);
 
     registerUser({
       name: formData.name.trim(),
       email: formData.email.trim(),
       phone: formData.phone.trim(),
-      domicile: formData.domicile.trim() || "-",
+      domicile: formData.domicile.trim(),
       targetProgram: formData.targetProgram,
       registeredAt: new Date().toISOString(),
     });
@@ -146,11 +155,47 @@ const BiodataForm = () => {
 
         <button
           type="submit"
-          className="w-full  mt-2 bg-primary hover:opacity-90 text-white font-bold py-3 rounded-xl transition-all cursor-pointer"
+          className="w-full mt-2 bg-primary hover:opacity-90 text-white font-bold py-3 rounded-xl transition-all cursor-pointer"
         >
           Mulai Placement Test
         </button>
       </form>
+
+      <ConfirmModal
+        isOpen={isConfirmOpen}
+        title="Konfirmasi Data Peserta"
+        message={
+          <div className="space-y-3 text-left bg-zinc-50 p-3.5 rounded-xl border border-zinc-200">
+            <div className="text-xs space-y-1 text-neutral">
+              <div>
+                <strong>Nama:</strong> {formData.name}
+              </div>
+              <div>
+                <strong>Email:</strong> {formData.email}
+              </div>
+              <div>
+                <strong>WhatsApp:</strong> {formData.phone}
+              </div>
+              <div>
+                <strong>Domisili:</strong> {formData.domicile}
+              </div>
+              <div>
+                <strong>Target:</strong> {formData.targetProgram}
+              </div>
+            </div>
+            <p className="text-xs text-neutral font-medium bg-accent p-2.5 rounded-lg border border-amber-200">
+              Perhatian: Data profil ini <strong>tidak dapat diubah</strong>{" "}
+              setelah Anda memulai tes. Pastikan seluruh data sudah benar.
+            </p>
+          </div>
+        }
+        iconType="warning"
+        confirmVariant="primary"
+        confirmText="Ya, Data Sudah Benar"
+        cancelText="Periksa Kembali"
+        onCancel={() => setIsConfirmOpen(false)}
+        onConfirm={handleConfirmRegister}
+      />
     </div>
   );
 };
