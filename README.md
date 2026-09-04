@@ -1,7 +1,7 @@
 # SchoLingo - Multi-Step English Placement Test Engine
 
 > **Live Deployment URL:** [https://scholingo.vercel.app](https://scholingo.vercel.app)  
-> **GitHub Repository:** [https://github.com/username/scholingo](https://github.com/username/scholingo)
+> **GitHub Repository:** [https://github.com/Mazees/scholingo](https://github.com/username/scholingo)
 
 ---
 
