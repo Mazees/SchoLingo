@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import { useQuiz } from "../../../hooks/useQuiz";
 
 const Hero = () => {
+  const { isRegistered } = useQuiz;
   return (
     <section
       id="home"
@@ -28,7 +30,7 @@ const Hero = () => {
 
           <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto pt-2">
             <Link
-              to="/register"
+              to={isRegistered ? "/test" : "/register"}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-primary hover:text-primary hover:bg-white text-white text-base font-bold px-8 py-3.5 rounded-xl transition-all"
             >
               Mulai Tes Sekarang
