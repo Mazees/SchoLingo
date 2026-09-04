@@ -64,7 +64,7 @@ export const QuizProvider = ({ children }) => {
 
   const goToQuestion = useCallback(
     (index) => {
-      if (index >= 0 && index < questions.length) {
+      if (index >= -1 && index < questions.length) {
         setCurrentQuestionIndex(index);
       }
     },

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const ResultPage = () => {
   const [step, setStep] = useState(1);
-  const { userSession, questions, getResult } = useQuiz();
+  const { userSession, questions, getResult, goToQuestion } = useQuiz();
 
   const { score, level, correctCount, programsSuggestion } = getResult();
 
@@ -91,6 +91,7 @@ const ResultPage = () => {
             <div className="pt-2 sm:pt-4 flex flex-col-reverse sm:flex-row items-center justify-between gap-3 sm:gap-4">
               <Link
                 to="/test"
+                onClick={() => goToQuestion(-1)}
                 className="w-full sm:w-auto px-6 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl bg-white hover:bg-neutral/10 text-neutral font-black text-xs sm:text-sm border-2 border-neutral/20 transition cursor-pointer text-center shadow-xs"
               >
                 Ulangi Tes
